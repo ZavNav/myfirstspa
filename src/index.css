@@ -33,3 +33,38 @@ ul.header li a{
 .content li {
     margin-bottom: 10px;
 }
+
+.buttons{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: all .15s ease-in;
+}
+
+.buttons:hover:nth-child(1){
+    background-color: #F45B69;
+}
+.buttons:hover:nth-child(3){
+    background-color: #C0DFA1;
+}
+.counterClass{
+    background-color: rgba(192, 223, 161, 0.45);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.counterValue{
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+    border-radius: 7px;
+    padding: 5px 10px;
+    background-color: snow;
+}

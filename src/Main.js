@@ -3,6 +3,12 @@ import { Route, Routes, NavLink, HashRouter } from "react-router-dom";
 import Home from "./Home";
 import Stuff from "./Stuff";
 import Contact from "./Contact";
+import App from './App';
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import counter from "./reducer";
+
+let store = createStore(counter);
 
 class Main extends Component {
     render() {
@@ -14,12 +20,14 @@ class Main extends Component {
                         <li><NavLink to={"/"}>Main</NavLink></li>
                         <li><NavLink to={"/stuff"}>Stuff</NavLink></li>
                         <li><NavLink to={"/contact"}>Contact</NavLink></li>
+                        <li><NavLink to={"/counter"}>Counter</NavLink></li>
                     </ul>
                     <div className={"content"}>
                         <Routes>
                             <Route exact path="/" element={<Home/>}/>
                             <Route path="/stuff" element={<Stuff/>}/>
                             <Route path="/contact" element={<Contact/>}/>
+                            <Route path="/counter" element={<Provider store={store}><App/></Provider>}/>
                         </Routes>
                     </div>
                 </div>

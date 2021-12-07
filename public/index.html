@@ -3,11 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://unpkg.com/redux@latest/dist/redux.js"></script>
     <title>Router</title>
 </head>
 <body>
     <div id="root">
         
     </div>
+    <script>
+        function addColor(value){
+            return{
+                type: "ADD",
+                color: value
+            }
+        }
+        function removeColor(value){
+            return{
+                type: "REMOVE",
+                color: value
+            }
+        }
+        function favoriteColors(state, action){
+            if(state === undefined){
+                state = []
+            }
+            if(action.type === "ADD"){
+                return state.concat(action.color);
+            }else if (action.type === "REMOVE"){
+                return state.filter((item) => {
+                    return item !== action.color;
+                })
+            }else{
+                return state;
+            }
+        }
+
+        let store = Redux.createStore(favoriteColors);
+        store.dispatch(addColor("blue"));
+        store.dispatch(addColor("green"));
+        store.dispatch(addColor("yellow"));
+        store.dispatch(addColor("red"));
+
+        store.subscribe(render);
+
+        function render(){
+            console.log(store.getState())
+        }
+
+    </script>
 </body>
 </html>
